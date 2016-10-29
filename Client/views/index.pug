@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  //p Enter data to create a link to get user data
+  //p
+  //  form#form
+  //    label(for='clientId') Client Id
+  //    input(type='text', name='clientId', id='clientId')
+  //    label(for='secret') Secret
+  //    input(type='text', name='secret', id='secret')
+  //    button(type='submit') Create link
+
+  a(href=`http://localhost:3000/api/oauth2/authorize?client_id=${clientId}&response_type=code&redirect_uri=http://localhost:3001`) Get user data
+
+  script

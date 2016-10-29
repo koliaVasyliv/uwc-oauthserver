@@ -1,0 +1,30 @@
+
+extends ./layout.pug
+
+block content
+  .container
+    .row
+      .col-xs-6
+        if messages
+          each message in messages
+            .panel.panel-danger
+              .panel-heading= message
+        form(action='clients', method='post')
+          .form-group
+            label(for='name') Service name
+            input.form-control(type='text', name='name', id='name')
+          .form-group
+            label(for='cb_url') Url for callback (webhook)
+            input.form-control(type='text', name='cb_url', id='cb_url')
+          button.btn.btn-default(type='submit') Add new service
+        br
+        if user.clients.length !== 0 
+          table.table
+            tr
+              th Name
+              th Url
+            each client in user.clients
+              tr
+                td
+                  a(href=`/clients/${client.name}`)= client.name
+                td= client.cb_url

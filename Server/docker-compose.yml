@@ -1,0 +1,27 @@
+version: '2'
+services:
+  node:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    networks:
+      - nodeapp-network
+
+  mongo:
+    image: mongo
+    ports:
+      - "27018:27018"
+    networks:
+      - nodeapp-network
+
+  redis:
+    image: redis
+    ports:
+      - "6379"
+    networks:
+      - nodeapp-network
+
+networks:
+  nodeapp-network:
+    driver: bridge

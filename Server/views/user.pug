@@ -1,0 +1,31 @@
+
+extends ./layout.pug
+
+block content
+  .container
+    .row
+      .col-xs-6.col-xs-offset-1.profile
+        if messages
+          each message in messages
+            .panel.panel-danger
+              .panel-heading= message
+        form(action=`/${user.username}`, method='POST', enctype='multipart/form-data', id='profile-update')
+          .form-group
+            .media
+              .media-left
+                img.media-object.thumbnail(src=`${user.avatar.src ? '/' + user.avatar.src : '/images/default-image.png'}`,
+                alt=`${user.avatar.originalName}`, id='img-avatar')
+              .media-body
+                .media-heading
+                  input.inputfile(type='file', name='avatar', id='avatar')
+                  label.btn.btn-default(for='avatar', id='avatarLabel'): b Upload new picture
+          .form-group
+            label(for='username') Name
+            input.form-control(type='text', name='username', id='username', value=`${user.username}`)
+          .form-group
+            label(for='email') Email
+            input.form-control(type='text', name='email', id='email', value=`${user.email}`)
+          .form-group
+            label(for='bio') Bio
+            textarea.form-control(name='bio', id='bio', rows='3', placeholder='Tell a little about yourself')= user.bio
+          button.btn.btn-success.btn-lg(type='submit'): b Update profile

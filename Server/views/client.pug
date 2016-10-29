@@ -1,0 +1,16 @@
+
+extends ./layout.pug
+
+block content
+  .container
+    .row
+      .col-xs-6.col-xs-offset-3
+        .form-group
+          p
+            span.text-muted: b Client ID:
+            br
+            span= client.id
+          p
+            span.text-muted: b Secret:
+            br
+            span= client.secret
