@@ -1,7 +1,7 @@
 # OAuthServer
 ## Description
 
-The Single Sign Service allow you to register on site, fill in your 
+The OAuthServer allow you to register on site, fill in your 
 personal data and use these data on other websites that will use this 
 service.
 
